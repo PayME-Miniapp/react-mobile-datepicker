@@ -20,5 +20,12 @@
     "stripInternal": true,
     "outDir": "./dist"
   },
-  "include": ["./lib/**/*.ts*"]
+  "exclude": ["node_modules"],
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+  ]
+  // "include": ["./lib/**/*.ts*", "./examples/**/*.ts*"]
 }
