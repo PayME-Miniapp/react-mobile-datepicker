@@ -1,5 +1,5 @@
 {
-  "name": "react-mobile-datepicker-ts",
+  "name": "react-native-datepicker",
   "version": "1.0.7",
   "types": "dist",
   "description": "react based date picker like native",
@@ -9,9 +9,9 @@
     "dist/*",
     "dist/**/*"
   ],
-  "amdName": "reactMobileDatePickerTs",
-  "repository": "jin60641/react-mobile-datepicker",
-  "homepage": "https://github.com/jin60641/react-mobile-datepicker#readme",
+  "amdName": "reactNativeDatePicker",
+  "repository": "PayME-Miniapp/react-mobile-datepicker",
+  "homepage": "https://github.com/PayME-Miniapp/react-mobile-datepicker#readme",
   "keywords": [
     "react-component",
     "react-datepicker",
