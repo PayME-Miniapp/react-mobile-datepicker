@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, {
   FC, useCallback, useEffect, useRef, useState,
 } from 'react';
@@ -91,9 +92,9 @@ const DatePickerItem: FC<DatePickerItemProps> = ({
 
   const moveToNext = (direction: Direction) => {
     const date = dates[MIDDLE_INDEX];
-    if (direction === Direction.UP && date.getTime() < min.getTime() && moveDateCount.current) {
+    if (direction === Direction.UP && dayjs(date).isBefore(min, 'day') && moveDateCount.current) {
       updateDates(Direction.UP);
-    } else if (direction === Direction.DOWN && date.getTime() > max.getTime() && moveDateCount.current) {
+    } else if (direction === Direction.DOWN && dayjs(date).isAfter(max, 'day') && moveDateCount.current) {
       updateDates(Direction.DOWN);
     }
 
@@ -142,7 +143,7 @@ const DatePickerItem: FC<DatePickerItemProps> = ({
 
     const date = dates[MIDDLE_INDEX];
 
-    if (date.getTime() < min.getTime() || date.getTime() > max.getTime()) {
+    if (dayjs(date).isBefore(min, 'day') || dayjs(date).isAfter(max, 'day')) {
       return;
     }
 
@@ -204,8 +205,8 @@ const DatePickerItem: FC<DatePickerItemProps> = ({
 
   const onWheel = useCallback((e) => {
     const date = dates[MIDDLE_INDEX];
-    if (date.getTime() < min.getTime() || date.getTime() > max.getTime()) {
-      if (date.getTime() < min.getTime())
+    if (dayjs(date).isBefore(min, 'day') || dayjs(date).isAfter(max, 'day')) {
+      if (dayjs(date).isBefore(min, 'day'))
         moveToNext(Direction.UP);
       else
         moveToNext(Direction.DOWN);
@@ -225,7 +226,7 @@ const DatePickerItem: FC<DatePickerItemProps> = ({
 
   const renderDatepickerItem = useCallback((date: Date, index: number) => {
     const className =
-      (date < min || date > max) ?
+      (dayjs(date).isBefore(min, 'day') || dayjs(date).isAfter(max, 'day')) ?
         'disabled' : '';
 
     const formatDate = isFunction(format) ? format(date) : convertDate(date, format);

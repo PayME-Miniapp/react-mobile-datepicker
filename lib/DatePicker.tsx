@@ -2,6 +2,7 @@
  * @module DatePicker Component
  */
 
+import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
 
 import DatePickerItem from './DatePickerItem';
@@ -101,11 +102,11 @@ const DatePicker: React.FC<DatePickerProps> = ({
   }, [propsValue]);
 
   useEffect(() => {
-    if (value.getTime() > max.getTime()) {
+    if (dayjs(value).isAfter(max, 'day')) {
       setValue(new Date(max));
     }
 
-    if (value.getTime() < min.getTime()) {
+    if (dayjs(value).isBefore(min, 'day')) {
       setValue(new Date(min));
     }
   }, [value, min, max]);

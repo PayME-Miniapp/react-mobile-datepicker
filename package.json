@@ -1,6 +1,6 @@
 {
   "name": "react-mobile-datepicker-ts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "types": "dist",
   "description": "react based date picker like native",
   "module": "dist/index.js",
@@ -72,5 +72,8 @@
     "react": "^16",
     "react-dom": "^16"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.11.10"
+  }
 }
